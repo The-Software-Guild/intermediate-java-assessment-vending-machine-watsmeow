@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 /*
 * This is the data transfer object. It establishes:
 * - the properties and methods that vending machine items have
-* - the properties will be set to private because they should not be directly accessible
-* - the methods will be set to public since we can use setters and getters to retrieve or update them
+* - the properties are set to private because they should not be directly accessible
+* - the methods are set to public since we can use setters and getters to retrieve or update them
 * */
 public class Item {
 

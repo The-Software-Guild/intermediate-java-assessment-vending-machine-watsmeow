@@ -51,7 +51,7 @@ public class VendingMachineDaoFileImpl implements VendingMachineDaoFile{
         return items;
     }
 
-
+    // Marshals the snack objects into a string to be saved in the txt file
     public String marshallItem(Item item) {
         String itemAsText = item.getName() + DELIMITER;
         itemAsText += item.getCost() + DELIMITER;
@@ -59,7 +59,7 @@ public class VendingMachineDaoFileImpl implements VendingMachineDaoFile{
         return itemAsText;
     }
 
-
+    // Writes all snacks in hash to the .txt file for storage
     public void writeToItemsFile(List<Item> itemList, String file) throws VendingMachinePersistenceException {
         PrintWriter out;
 

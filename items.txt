@@ -1,6 +1,6 @@
-Milky Way::1.25::9
+Milky Way::1.25::10
 Chips::2.75::10
 Snickers::1.5::10
 Soda::3::10
-Juice::2.5::10
+Juice::2.5::9
 Pop-tarts::2.25::10

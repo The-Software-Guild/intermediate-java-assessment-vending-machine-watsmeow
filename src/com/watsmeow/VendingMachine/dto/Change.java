@@ -3,13 +3,16 @@ package com.watsmeow.VendingMachine.dto;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+// Class to utilize enums and provide the user with correct change
 public class Change {
     BigDecimal change;
 
+    // Constructor that takes in the change due to the user in BigDecimal format
     public Change(BigDecimal change) {
         this.change = change;
     }
 
+    // Returns change to user in appropriate breakdown of coins as a string
     public String provideChange() {
         int quarters = calculate(Coins.QUARTERS, change);
         change = change.remainder(new BigDecimal(.25));
@@ -27,6 +30,7 @@ public class Change {
         );
     }
 
+    // Calculates the qty of each coin due to the user using the Coins class enums and BigDecimal
     private int calculate(Coins coin, BigDecimal bigDec) {
         switch (coin) {
             case QUARTERS:

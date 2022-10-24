@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 import java.util.Scanner;
 
 /*
-* This class implements the UserIO by defining the public methods that will print out information to the user and
+* This class implements the UserIO by defining the public methods that  print out information to the user and
 * take in the user's input
 * */
 public class UserConsoleImpl implements UserIO {

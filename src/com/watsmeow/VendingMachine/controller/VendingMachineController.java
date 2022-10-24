@@ -47,9 +47,14 @@ public class VendingMachineController {
             if (userSelection.toLowerCase().equals("exit")) {
                 keepGoing = false;
             } else {
-                BigDecimal userMoney = new BigDecimal(userSelection);
-                userMoney.setScale(2, RoundingMode.HALF_UP);
-                getSelectionProvideChange(userMoney);
+                try {
+                    BigDecimal userMoney = new BigDecimal(userSelection);
+                    userMoney.setScale(2, RoundingMode.HALF_UP);
+                    getSelectionProvideChange(userMoney);
+                } catch(NumberFormatException e) {
+                    view.displayErrorBanner();
+                }
+
             }
         }
         exitMessage();

@@ -1,9 +1,9 @@
 package com.watsmeow.VendingMachine.ui;
 
 /*
-* This class will display data fetched from the model layer by the controller and presents that data to the user
+* This class displays data fetched from the model layer by the controller and presents that data to the user
 * when the user asks for it.
-* It will:
+* It:
 * - instantiate the UserIO as a private class
 * - instantiate the view using a constructor that makes it public, and pass in the UserIO
 * - print out menu options to the user

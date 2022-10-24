@@ -1,7 +1,7 @@
 package com.watsmeow.VendingMachine.ui;
 
 /*
-* Public interface that defines what methods are going to be used to communicate with the user
+* Public interface that defines what methods are used to communicate with the user
 * so that other classes can use them without touching the implementation file
 *  */
 

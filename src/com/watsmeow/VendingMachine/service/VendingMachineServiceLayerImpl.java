@@ -43,11 +43,14 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         auditDao.writeAuditEntry("Snack " + name + " REMOVED.");
         return removedItem;
     }
+
+    // @return an item using the getItem dao method
     @Override
     public Item getItem(String name) throws VendingMachinePersistenceException {
         return dao.getItem(name);
     }
 
+    // Updates the audit log when snack information is updated
     @Override
     public void updateItem(String name, Item item) throws VendingMachinePersistenceException,
             VendingMachineDataValidationException {
@@ -57,6 +60,7 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         auditDao.writeAuditEntry("Snack " + item.getName() + " UPDATED.");
     }
 
+    // Lambda that ensures that the only snacks that are returned are items with a qty > 0
     @Override
     public List<Item> getAllItems() throws VendingMachinePersistenceException {
         return dao.getAllItems()
@@ -65,6 +69,7 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
                 .collect(Collectors.toList());
     }
 
+    // Ensure that snacks are not added to the vending machine with incomplete information fields
     private void validateVendingMachineData(Item item) throws VendingMachineDataValidationException {
         if (item.getName() == null
         || item.getName().trim().length() == 0

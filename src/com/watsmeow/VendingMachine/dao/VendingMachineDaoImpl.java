@@ -20,24 +20,29 @@ import java.util.*;
 
 public class VendingMachineDaoImpl implements VendingMachineDao {
 
+    // Hashmap to store snacks in when unmarshalled from .txt file
     private Map<String, Item> items = new HashMap();
 
+    // .txt file that stores snack info so that it can persist
     private static final String ITEM_FILE = "items.txt";
 
+    // Saving the dao file into a variable
     VendingMachineDaoFile fio;
+
+    // Constructor for the implementation, takes in the dao file and .txt file
     public VendingMachineDaoImpl() throws VendingMachinePersistenceException {
         fio = new VendingMachineDaoFileImpl();
         items = fio.loadVendingMachine(ITEM_FILE);
     }
 
-    public Item createItem(Item item) throws VendingMachinePersistenceException {
+    // Method to add a snack into the vending machine
+    public void addItem(Item item) throws VendingMachinePersistenceException {
         items = fio.loadVendingMachine(ITEM_FILE);
-        Item newItem = items.put(item.getName().toLowerCase(), item);
+        items.put(item.getName().toLowerCase(), item);
         fio.writeToItemsFile(new ArrayList<>(items.values()), ITEM_FILE);
-        return newItem;
     }
 
-
+    // Method to remove a snack from the vending machine
     public Item removeItem(String name) throws VendingMachinePersistenceException {
         name = name.toLowerCase();
         items = fio.loadVendingMachine(ITEM_FILE);
@@ -46,6 +51,7 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
         return removedItem;
     }
 
+    // Method to get a snack from the vending machine
     @Override
     public Item getItem(String name) throws VendingMachinePersistenceException {
         name = name.toLowerCase();
@@ -53,6 +59,7 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
         return items.get(name);
     }
 
+    // Method to update a snack in the vending machine
     @Override
     public void updateItem(String name, Item item) throws VendingMachinePersistenceException {
         name = name.toLowerCase();
@@ -66,16 +73,12 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
         fio.writeToItemsFile(new ArrayList<>(items.values()), ITEM_FILE);
     }
 
+    // Method to get all snacks from the vending machine in list form
     @Override
     public List<Item> getAllItems() throws VendingMachinePersistenceException {
         items = fio.loadVendingMachine(ITEM_FILE);
         return new ArrayList<>(items.values());
     }
 
-    public void addItem(Item item) throws VendingMachinePersistenceException {
-        items = fio.loadVendingMachine(ITEM_FILE);
-        items.put(item.getName().toLowerCase(), item);
-        fio.writeToItemsFile(new ArrayList<>(items.values()), ITEM_FILE);
-    }
 
 }
